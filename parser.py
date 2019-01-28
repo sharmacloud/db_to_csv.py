@@ -1,0 +1,45 @@
+#AUTHOR: PIYUSH SHARMA
+#DATE: JANUARY 27, 2019
+#DATABASE TO CSV PARSER
+
+import sqlite3
+import os
+import csv
+
+def main():
+
+    #Initialization messages
+    print('[+] Initializing DBParser by Piyush Sharma...')
+    
+
+    #Define file paths
+    db_path = 'acm/db.sqlite3'
+    csv_path = 'acm/students.csv'
+
+    #connect to the database
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    
+    #create csv file object and open in write mode
+    csv_file = open(csv_path, 'w')
+
+    #initialize writer object to write to the csv file
+    csv_writer = csv.writer(csv_file)
+    
+    #execute command
+    student_info = c.execute('SELECT * FROM signup_student;').fetchall()
+    
+    
+    print('[+] Writing Database rows to CSV file')
+
+    #Write to the csv file
+    for i in student_info:
+        csv_writer.writerow(i)
+
+
+    #Finished
+    print('[+] FINISHED! CSV file is now ready for use.')
+    
+    
+#Call main function
+main()
