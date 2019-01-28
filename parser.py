@@ -13,8 +13,8 @@ def main():
     
 
     #Define file paths
-    db_path = 'acm/db.sqlite3'
-    csv_path = 'acm/students.csv'
+    db_path = 'DATABASE FILE PATH'
+    csv_path = 'CSV FILE PATH'
 
     #connect to the database
     conn = sqlite3.connect(db_path)
@@ -27,7 +27,7 @@ def main():
     csv_writer = csv.writer(csv_file)
     
     #execute command
-    student_info = c.execute('SELECT * FROM signup_student;').fetchall()
+    student_info = c.execute('SELECT * FROM YOUR_TABLE_HERE;').fetchall()
     
     
     print('[+] Writing Database rows to CSV file')
